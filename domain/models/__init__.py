@@ -1,2 +1,2 @@
 """Exporting all models"""
-from .example import *
+from .product import *

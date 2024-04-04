@@ -1,14 +1,14 @@
 """Creation of controller list"""
 
 from . import health
-from . import example
+from . import product
 
 routes = [
-    example.router,
+    product.router,
 
     health.router,  # health route must be the last one!
 ]
 tags = [
-    *example.tags,
+    *product.tags,
     *health.tags,  # health tag must be the last one!
 ]

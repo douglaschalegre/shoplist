@@ -1,7 +1,6 @@
 """Exporting schemas"""
 from .generic import *
-from .app.example import *
-from .app.child import *
+from .app.product import *
 
 # Always last
 from .orm import *

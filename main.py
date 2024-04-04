@@ -10,11 +10,10 @@ from config.env import application, environment
 from config.middlewares import middlewares, cors, log_request_middleware
 from controllers import routes, tags
 from domain.errors import base_errors
-from utils.valuable import valuable
 
 
 DESCRIPTION = '''
-Description of the service
+API for managing shopping lists.
 '''
 
 app = FastAPI(
@@ -22,9 +21,9 @@ app = FastAPI(
     description=DESCRIPTION,
     version="0.0.1",
     contact={
-        "name": "Example",
-        "url": "https://example.com.br",
-        "email": "example@example.com",
+        "name": "Douglas",
+        "url": "https://douglaschalegre.com.br",
+        "email": "douglas.chalegre@gmail.com",
     },
     swagger_ui_parameters={"defaultModelsExpandDepth": -1},
     responses=base_errors,
@@ -48,12 +47,7 @@ Service {application["id"]} is available on port {port}:
   Environment variables:
 
     -> Database:
-        USER_DB: {db["user"]}
-        HOST_DB: {db["host"]}
-        PORT_DB: {db["port"]}
-        SCHEMA_DB: {db["schema"]}
         NAME_DB: {db["name"]}
-        IS_PASSWORD_DEFINED: {valuable(db["password"])}
 
     -> Server:
         SUB_DIR: {base_url}

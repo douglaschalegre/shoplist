@@ -11,5 +11,5 @@ class Product(GenericBase):
 
     id = Column('prod_cd_product', String(36),
                 default=uuid4, primary_key=True)
-    created_at = Column('prod_df_created_ats', DateTime,
+    created_at = Column('prod_df_created_at', DateTime,
                         server_default=text('NOW()'))

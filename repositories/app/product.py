@@ -12,3 +12,14 @@ def get_products(
     '''Get all products'''
     query = session.query(models.Product).all()
     return query
+
+
+def create_product(
+    product: models.Product,
+    session: Session
+) -> models.Product:
+    '''Create a product'''
+    session.add(product)
+    session.flush()
+
+    return product

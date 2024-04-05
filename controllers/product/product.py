@@ -27,3 +27,20 @@ def get_products(
     return product_service.get_products(
         session=session
     )
+
+
+@router.post(
+    path='/product',
+    summary='Create a product',
+    tags=[PRODUCT['name']],
+    response_model=schemas.Product
+)
+def create_product(
+    product: schemas.ProductInput,
+    session: Session = Depends(get_session)
+) -> models.Product:
+    '''Create a product'''
+    return product_service.create_product(
+        product=product,
+        session=session
+    )

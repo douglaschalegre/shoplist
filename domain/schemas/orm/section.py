@@ -19,6 +19,7 @@ class SectionLite(SectionInput):
     '''Lite Section schema'''
     id: str = Field(title='UUID')
     created_at: datetime = Field(title='Section creation datetime in UTC 0')
+    updated_at: datetime = Field(title='Section update datetime in UTC 0')
 
 
 class SectionBase(SectionLite):

@@ -23,6 +23,7 @@ class ProductLite(ProductInput):
     '''Lite Product schema'''
     id: str = Field(title='UUID')
     created_at: datetime = Field(title='Product creation datetime in UTC 0')
+    updated_at: datetime = Field(title='Product update datetime in UTC 0')
 
 
 class ProductBase(ProductLite):

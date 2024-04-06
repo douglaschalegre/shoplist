@@ -1,5 +1,6 @@
 '''Model for product'''
 from sqlalchemy import Column, DateTime, String, Float
+from sqlalchemy.orm import relationship
 from sqlalchemy.sql import text
 from .generic import GenericBase
 
@@ -15,3 +16,6 @@ class Product(GenericBase):
     image_url = Column('prod_tx_image_url', String, nullable=True)
     created_at = Column('prod_df_created_at', DateTime,
                         server_default=text('NOW()'))
+
+    section_id = Column('sect_cd_section', String(36))
+    section = relationship('Section', backref='products')

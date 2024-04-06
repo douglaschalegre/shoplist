@@ -1,5 +1,6 @@
 '''ORM schema for Product sqlalchemy model'''
 from datetime import datetime
+from uuid import uuid4
 from pydantic import Field
 from domain.schemas.generic import TableSchema
 
@@ -7,8 +8,11 @@ from domain.schemas.generic import TableSchema
 class ProductEdit(TableSchema):
     '''Edit Product schema'''
     image_url: str | None = Field(default=None, title='Product image URL')
-    price: float = Field(..., title='Product price')
-    name: str = Field(..., title='Product name')
+    price: float = Field(title='Product price')
+    name: str = Field(title='Product name',
+                      examples=[uuid4()])
+    section_id: str = Field(title='Section UUID of the product',
+                            examples=[uuid4()])
 
 
 class ProductInput(ProductEdit):

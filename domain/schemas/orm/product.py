@@ -7,6 +7,9 @@ from domain.schemas.generic import TableSchema
 
 class ProductEdit(TableSchema):
     '''Edit Product schema'''
+    image_url: str | None = Field(default=None, title='Product image URL')
+    price: float = Field(..., title='Product price')
+    name: str = Field(..., title='Product name')
 
 
 class ProductInput(ProductEdit):

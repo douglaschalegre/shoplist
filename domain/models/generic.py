@@ -4,7 +4,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from config.database import db
 
 metadata_obj = MetaData(schema=db["name"])
-Base = declarative_base(metadata=metadata_obj)
+# Base is empty because SQLITE does not require a declarative_base
+Base = declarative_base(metadata='')
 
 ALL_DELETE = 'all, delete'
 

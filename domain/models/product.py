@@ -1,5 +1,4 @@
 '''Model for product'''
-from uuid import uuid4
 from sqlalchemy import Column, DateTime, String, Float
 from sqlalchemy.sql import text
 from .generic import GenericBase
@@ -10,7 +9,7 @@ class Product(GenericBase):
     __tablename__ = 'product'
 
     id = Column('prod_cd_product', String(36),
-                default=uuid4, primary_key=True)
+                primary_key=True)
     name = Column('prod_nm_name', String, nullable=False)
     price = Column('prod_vl_price', Float, nullable=False)
     image_url = Column('prod_tx_image_url', String, nullable=True)

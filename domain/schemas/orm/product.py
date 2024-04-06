@@ -1,6 +1,5 @@
 '''ORM schema for Product sqlalchemy model'''
 from datetime import datetime
-from uuid import UUID
 from pydantic import Field
 from domain.schemas.generic import TableSchema
 
@@ -18,7 +17,7 @@ class ProductInput(ProductEdit):
 
 class ProductLite(ProductInput):
     '''Lite Product schema'''
-    id: UUID = Field(title='UUID')
+    id: str = Field(title='UUID')
     created_at: datetime = Field(title='Product creation datetime in UTC 0')
 
 

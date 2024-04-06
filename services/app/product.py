@@ -1,4 +1,5 @@
 '''Service layer for product module'''
+from uuid import uuid4
 from sqlalchemy.orm import Session
 
 from domain import (
@@ -27,6 +28,8 @@ def create_product(
     product_model = models.Product(
         **product.model_dump()
     )
+    product_model.id = str(uuid4())  # type: ignore
+
     return product_repository.create_product(
         product=product_model,
         session=session

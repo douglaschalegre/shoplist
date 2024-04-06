@@ -1,0 +1,47 @@
+CREATE TABLE IF NOT EXISTS
+  user (
+    user_cd_user TEXT not null PRIMARY KEY,
+    user_nm_name TEXT not null,
+    user_tx_username TEXT not null,
+    user_tx_password TEXT not null,
+    user_df_created_at TIMESTAMP not null default CURRENT_TIMESTAMP,
+    user_df_updated_at TIMESTAMP not null default CURRENT_TIMESTAMP
+  );
+
+CREATE TABLE IF NOT EXISTS
+  list (
+    list_cd_list TEXT not null PRIMARY KEY,
+    list_nm_name TEXT not null,
+    list_df_created_at TIMESTAMP not null default CURRENT_TIMESTAMP,
+    list_df_updated_at TIMESTAMP not null default CURRENT_TIMESTAMP
+  );
+
+CREATE TABLE IF NOT EXISTS
+  list_user (
+    lius_cd_list_user TEXT not null PRIMARY KEY,
+    lius_df_created_at TIMESTAMP not null default CURRENT_TIMESTAMP,
+    user_cd_user TEXT not null,
+    list_cd_list TEXT not null,
+    FOREIGN KEY (user_cd_user) REFERENCES user (user_cd_user),
+    FOREIGN KEY (list_cd_list) REFERENCES list (list_cd_list)
+  );
+
+CREATE TABLE IF NOT EXISTS
+  section (
+    sect_cd_section TEXT not null PRIMARY KEY,
+    sect_nm_name TEXT not null,
+    sect_df_created_at TIMESTAMP not null default CURRENT_TIMESTAMP,
+    sect_df_updated_at TIMESTAMP not null default CURRENT_TIMESTAMP
+  );
+  
+CREATE TABLE IF NOT EXISTS
+  product (
+    prod_cd_product TEXT not null PRIMARY KEY,
+    prod_nm_name TEXT not null,
+    prod_vl_price REAL not null,
+    prod_tx_image_url TEXT,
+    prod_df_created_at TIMESTAMP not null default CURRENT_TIMESTAMP,
+    prod_df_updated_at TIMESTAMP not null default CURRENT_TIMESTAMP,
+    sect_cd_section TEXT not null,
+    FOREIGN KEY (sect_cd_section) REFERENCES section (sect_cd_section)
+  );

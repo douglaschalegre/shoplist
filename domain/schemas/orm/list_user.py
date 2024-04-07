@@ -12,7 +12,7 @@ class ListUserEdit(TableSchema):
 class ListUserInput(ListUserEdit):
     '''Input ListUser schema'''
     list_id: str = Field(title='List UUID', examples=[str(uuid4())])
-    user_id: str = Field(title='User UUID', examples=[str(uuid4())])
+    users_ids: list[str] = Field(title='Users UUID', examples=[[str(uuid4())]])
 
 
 class ListUserLite(ListUserInput):

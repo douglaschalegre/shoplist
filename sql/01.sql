@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS
     prod_nm_name TEXT not null,
     prod_vl_price REAL not null,
     prod_tx_image_url TEXT,
+    prod_cd_barcode TEXT,
     prod_df_created_at TIMESTAMP not null default CURRENT_TIMESTAMP,
     prod_df_updated_at TIMESTAMP not null default CURRENT_TIMESTAMP,
     sect_cd_section TEXT not null,

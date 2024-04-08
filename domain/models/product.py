@@ -14,6 +14,7 @@ class Product(GenericBase):
     name = Column('prod_nm_name', String, nullable=False)
     price = Column('prod_vl_price', Float, nullable=False)
     image_url = Column('prod_tx_image_url', String, nullable=True)
+    barcode = Column('prod_cd_barcode', String, nullable=False)
     created_at = Column('prod_df_created_at', DateTime,
                         server_default=text('NOW()'))
 

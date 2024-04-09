@@ -34,18 +34,18 @@ def get_user_list(
 
 @router.post(
     path='/list/users',
-    summary='Add a users to a list',
+    summary='Add users to a list',
     tags=[LIST_USER['name']],
     response_model=schemas.ListUser
 )
 def add_users_to_list(
     list_user_input: schemas.ListUserInput = Body(
         title='Input for list user',
-        description='Necessary data to add a user to a list'
+        description='Necessary data to add users to a list'
     ),
     session: Session = Depends(get_session)
 ) -> list[models.ListUser]:
-    '''Create a list'''
+    '''Add users to a list'''
     return list_user_service.add_users_to_list(
         list_user_input=list_user_input,
         session=session

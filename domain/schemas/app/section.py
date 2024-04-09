@@ -7,4 +7,4 @@ from domain.schemas.orm import (
 
 class Section(SectionBase):
     '''Section schema'''
-    products = list[ProductLite]
+    products: list[ProductLite]

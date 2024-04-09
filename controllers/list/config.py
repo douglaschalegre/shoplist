@@ -2,12 +2,12 @@
 from fastapi import APIRouter
 
 LIST = dict(
-    name='LIST',
+    name='List',
     description='API to manage lists.'
 )
 
 LIST_USER = dict(
-    name='LIST_USER',
+    name='List/user',
     description='API to manage users of a list.'
 )
 

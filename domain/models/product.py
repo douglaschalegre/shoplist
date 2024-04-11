@@ -20,4 +20,4 @@ class Product(GenericBase):
 
     section_id = Column('sect_cd_section',
                         ForeignKey('section.sect_cd_section'))
-    section = relationship('Section', backref='products')
+    section = relationship('Section', back_populates='products')

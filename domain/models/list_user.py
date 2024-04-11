@@ -16,5 +16,5 @@ class ListUser(GenericBase):
 
     user_id = Column('user_cd_user', ForeignKey('user.user_cd_user'))
     list_id = Column('list_cd_list', ForeignKey('list.list_cd_list'))
-    users = relationship('User', backref='lists')
-    lists = relationship('List', backref='users')
+    users = relationship('User', back_populates='lists')
+    lists = relationship('List', back_populates='users')

@@ -19,4 +19,4 @@ class User(GenericBase):
     updated_at = Column('user_df_updated_at', DateTime,
                         server_default=text('NOW()'))
 
-    lists = relationship('ListUser', backref='users')
+    lists = relationship('ListUser', back_populates='users')

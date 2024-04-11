@@ -15,4 +15,4 @@ class Section(GenericBase):
     created_at = Column('sect_df_created_at', DateTime,
                         server_default=text('NOW()'))
 
-    products = relationship('Product', backref='section')
+    products = relationship('Product', back_populates='section')

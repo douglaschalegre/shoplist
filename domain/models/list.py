@@ -18,3 +18,4 @@ class List(GenericBase):
                         server_default=text('NOW()'))
 
     users = relationship('ListUser', back_populates='lists')
+    products = relationship('ListProduct', back_populates='shopping_list')

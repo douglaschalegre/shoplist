@@ -6,7 +6,7 @@ from .generic import GenericBase
 
 
 class ListProduct(GenericBase):
-    '''Listproduct model'''
+    '''ListProduct model'''
     __tablename__ = 'list_product'
 
     id = Column('lipr_cd_list_product', String(36),
@@ -20,5 +20,6 @@ class ListProduct(GenericBase):
     product_id = Column('prod_cd_product', ForeignKey(
         'product.prod_cd_product'))
     list_id = Column('list_cd_list', ForeignKey('list.list_cd_list'))
+
     products = relationship('Product', back_populates='lists')
-    lists = relationship('List', back_populates='products')
+    shopping_list = relationship('List', back_populates='products')

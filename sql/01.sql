@@ -46,3 +46,15 @@ CREATE TABLE IF NOT EXISTS
     sect_cd_section TEXT not null,
     FOREIGN KEY (sect_cd_section) REFERENCES section (sect_cd_section)
   );
+
+CREATE TABLE IF NOT EXISTS
+  list_product (
+    lipr_cd_list_product TEXT not null PRIMARY KEY,
+    lipr_nr_quantity INTEGER not null,
+    lipr_df_created_at TIMESTAMP not null default CURRENT_TIMESTAMP,
+    lipr_df_updated_at TIMESTAMP not null default CURRENT_TIMESTAMP,
+    list_cd_list TEXT not null,
+    prod_cd_product TEXT not null,
+    FOREIGN KEY (list_cd_list) REFERENCES list (list_cd_list),
+    FOREIGN KEY (prod_cd_product) REFERENCES product (prod_cd_product)
+  );

@@ -1,5 +1,5 @@
 '''Controllers for the list module'''
-from fastapi import Depends
+from fastapi import Depends, Body
 from sqlalchemy.orm import Session
 from config import get_session
 from services.app import (
@@ -42,5 +42,23 @@ def create_list(
     '''Create a list'''
     return list_service.create_list(
         shopping_list=shopping_list,
+        session=session
+    )
+
+
+@router.post(
+    path='/list/product',
+    summary='Add a product to a list',
+    tags=[LIST['name']],
+    response_model=schemas.List
+)
+def add_product_to_list(
+    list_product_input: schemas.ListProductInput = Body(
+        description='Product to add'),
+    session: Session = Depends(get_session)
+) -> models.List:
+    '''Add a product to a list'''
+    return list_service.add_product_to_list(
+        list_product_input=list_product_input,
         session=session
     )

@@ -26,9 +26,9 @@ def create_section(
 ) -> models.Section:
     '''Create a section'''
     section_model = models.Section(
+        id=str(uuid4()),  # type: ignore
         **section.model_dump()
     )
-    section_model.id = str(uuid4())  # type: ignore
     return section_repository.create_section(
         section=section_model,
         session=session

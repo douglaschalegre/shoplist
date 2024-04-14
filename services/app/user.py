@@ -26,9 +26,9 @@ def create_user(
 ) -> models.User:
     '''Create a user'''
     user_model = models.User(
+        id=str(uuid4()),  # type: ignore
         **user.model_dump()
     )
-    user_model.id = str(uuid4())  # type: ignore
     return user_repository.create_user(
         user=user_model,
         session=session

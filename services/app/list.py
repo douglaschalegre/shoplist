@@ -38,9 +38,9 @@ def create_list(
 ) -> models.List:
     '''Create a list'''
     list_model = models.List(
+        id=str(uuid4()),  # type: ignore
         **shopping_list.model_dump()
     )
-    list_model.id = str(uuid4())  # type: ignore
     return list_repository.create_list(
         shopping_list=list_model,
         session=session

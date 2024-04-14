@@ -27,9 +27,9 @@ def create_product(
     '''Create a product'''
     product.section_id = str(product.section_id)
     product_model = models.Product(
+        id=str(uuid4()),  # type: ignore
         **product.model_dump()
     )
-    product_model.id = str(uuid4())  # type: ignore
     return product_repository.create_product(
         product=product_model,
         session=session

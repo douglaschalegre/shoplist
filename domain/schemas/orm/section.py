@@ -1,6 +1,5 @@
 '''ORM schema for Section sqlalchemy model'''
 from datetime import datetime
-from uuid import uuid4
 from pydantic import Field
 from domain.schemas.generic import TableSchema
 
@@ -8,7 +7,7 @@ from domain.schemas.generic import TableSchema
 class SectionEdit(TableSchema):
     '''Edit Section schema'''
     name: str = Field(title='Section name',
-                      examples=[uuid4()])
+                      examples=['Fruits', 'Vegetables', 'Meat'])
 
 
 class SectionInput(SectionEdit):
@@ -19,7 +18,6 @@ class SectionLite(SectionInput):
     '''Lite Section schema'''
     id: str = Field(title='UUID')
     created_at: datetime = Field(title='Section creation datetime in UTC 0')
-    updated_at: datetime = Field(title='Section update datetime in UTC 0')
 
 
 class SectionBase(SectionLite):

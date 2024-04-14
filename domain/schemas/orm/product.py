@@ -11,7 +11,7 @@ class ProductEdit(TableSchema):
     barcode: str | None = Field(default=None, title='Product barcode')
     price: float = Field(title='Product price')
     name: str = Field(title='Product name',
-                      examples=[uuid4()])
+                      examples=['Apple', 'Banana', 'Orange'])
     section_id: str = Field(title='Section UUID of the product',
                             examples=[uuid4()])
 

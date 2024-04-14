@@ -53,10 +53,12 @@ def add_product_to_list(
 ) -> models.List:
     '''Add a product to a list'''
     list_product_model = models.ListProduct(
+        id=str(uuid4()),  # type: ignore
         **list_product_input.model_dump()
     )
+
     created_list_product = lp_repository.create_list_product(
         list_product=list_product_model,
         session=session
     )
-    return created_list_product.list
+    return created_list_product.shopping_list

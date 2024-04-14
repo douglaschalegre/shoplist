@@ -22,8 +22,8 @@ CREATE TABLE IF NOT EXISTS
     lius_df_created_at TIMESTAMP not null default CURRENT_TIMESTAMP,
     user_cd_user TEXT not null,
     list_cd_list TEXT not null,
-    FOREIGN KEY (user_cd_user) REFERENCES user (user_cd_user),
-    FOREIGN KEY (list_cd_list) REFERENCES list (list_cd_list)
+    FOREIGN KEY (user_cd_user) REFERENCES user (user_cd_user) ON DELETE CASCADE,
+    FOREIGN KEY (list_cd_list) REFERENCES list (list_cd_list) ON DELETE CASCADE
   );
 
 CREATE TABLE IF NOT EXISTS
@@ -55,6 +55,6 @@ CREATE TABLE IF NOT EXISTS
     lipr_df_updated_at TIMESTAMP not null default CURRENT_TIMESTAMP,
     list_cd_list TEXT not null,
     prod_cd_product TEXT not null,
-    FOREIGN KEY (list_cd_list) REFERENCES list (list_cd_list),
-    FOREIGN KEY (prod_cd_product) REFERENCES product (prod_cd_product)
+    FOREIGN KEY (list_cd_list) REFERENCES list (list_cd_list) ON DELETE CASCADE,
+    FOREIGN KEY (prod_cd_product) REFERENCES product (prod_cd_product) ON DELETE CASCADE
   );

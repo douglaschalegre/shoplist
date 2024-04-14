@@ -2,7 +2,7 @@
 from sqlalchemy import Column, DateTime, String, ForeignKey, Numeric
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import text
-from .generic import GenericBase
+from .generic import ALL_DELETE, GenericBase
 
 
 class ListProduct(GenericBase):
@@ -21,5 +21,15 @@ class ListProduct(GenericBase):
         'product.prod_cd_product'))
     list_id = Column('list_cd_list', ForeignKey('list.list_cd_list'))
 
-    products = relationship('Product', back_populates='lists')
-    shopping_list = relationship('List', back_populates='products')
+    products = relationship(
+        'Product',
+        back_populates='lists',
+        cascade=ALL_DELETE,
+        passive_deletes=True
+    )
+    shopping_list = relationship(
+        'List',
+        back_populates='products',
+        cascade=ALL_DELETE,
+        passive_deletes=True
+    )

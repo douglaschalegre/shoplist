@@ -72,7 +72,7 @@ def add_product_to_list(
     response_model=schemas.List
 )
 def delete_list(
-    list_id: UUID,
+    list_id: UUID = Path(description='List ID'),
     session: Session = Depends(get_session)
 ) -> models.List:
     '''Delete a list'''

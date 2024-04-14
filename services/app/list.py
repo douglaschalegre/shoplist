@@ -73,3 +73,17 @@ def delete_list(
         list_id=str(list_id),
         session=session
     )
+
+
+def delete_product_from_list(
+        list_id: UUID,
+        product_id: UUID,
+        session: Session
+) -> models.List:
+    '''Delete a product from a list'''
+    list_product = lp_repository.delete_list_product(
+        list_id=str(list_id),
+        product_id=str(product_id),
+        session=session
+    )
+    return list_product.shopping_list

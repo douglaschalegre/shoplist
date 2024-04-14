@@ -23,3 +23,16 @@ def create_user(
     session.flush()
 
     return user
+
+
+def get_user_from_username(
+    username: str,
+    session: Session
+) -> models.User:
+    '''Get a user by username'''
+    query = session.query(models.User).filter(
+        models.User.username == username
+    ).first()
+    if not query:
+        raise ValueError('User not found')
+    return query

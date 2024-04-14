@@ -17,6 +17,8 @@ class Product(GenericBase):
     barcode = Column('prod_cd_barcode', String, nullable=False)
     created_at = Column('prod_df_created_at', DateTime,
                         server_default=text('NOW()'))
+    updated_at = Column('prod_df_updated_at', DateTime,
+                        server_default=text('NOW()'))
 
     section_id = Column('sect_cd_section',
                         ForeignKey('section.sect_cd_section'))

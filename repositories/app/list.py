@@ -36,3 +36,14 @@ def create_list(
     session.flush()
 
     return shopping_list
+
+
+def delete_list(
+        list_id: str,
+        session: Session
+) -> models.List:
+    '''Delete a list'''
+    list_ = get_list_by_id(list_id, session)
+    session.delete(list_)
+    session.flush()
+    return list_

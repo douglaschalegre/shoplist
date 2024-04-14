@@ -62,3 +62,14 @@ def add_product_to_list(
         session=session
     )
     return created_list_product.shopping_list
+
+
+def delete_list(
+        list_id: UUID,
+        session: Session
+) -> models.List:
+    '''Delete a list'''
+    return list_repository.delete_list(
+        list_id=str(list_id),
+        session=session
+    )

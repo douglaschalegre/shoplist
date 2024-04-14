@@ -1,4 +1,5 @@
 '''Controllers for the list module'''
+from uuid import UUID
 from fastapi import Depends, Body
 from sqlalchemy.orm import Session
 from config import get_session
@@ -60,5 +61,22 @@ def add_product_to_list(
     '''Add a product to a list'''
     return list_service.add_product_to_list(
         list_product_input=list_product_input,
+        session=session
+    )
+
+
+@router.delete(
+    path='/list/{list_id}',
+    summary='Delete a list',
+    tags=[LIST['name']],
+    response_model=schemas.List
+)
+def delete_list(
+    list_id: UUID,
+    session: Session = Depends(get_session)
+) -> models.List:
+    '''Delete a list'''
+    return list_service.delete_list(
+        list_id=list_id,
         session=session
     )

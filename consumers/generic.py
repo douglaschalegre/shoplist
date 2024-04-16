@@ -4,7 +4,7 @@ from requests import request as raw_request
 
 
 def request(token: str, **kwargs) -> dict:
-    """Requests request with interceptors to handle token and commons exceptions."""
+    '''Requests request with interceptors to handle token and commons exceptions.'''
 
     headers: dict = {
         'Content-Type': 'application/json',

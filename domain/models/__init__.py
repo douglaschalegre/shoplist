@@ -1,4 +1,4 @@
-"""Exporting all models"""
+'''Exporting all models'''
 from .product import *
 from .section import *
 from .user import *

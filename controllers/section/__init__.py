@@ -1,4 +1,4 @@
-"""Exporting product controllers"""
+'''Exporting product controllers'''
 
 from .section import *
 from .config import (

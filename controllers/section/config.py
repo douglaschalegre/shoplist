@@ -1,4 +1,4 @@
-"""Tags description to Section API"""
+'''Tags description to Section API'''
 from fastapi import APIRouter
 
 SECTION = dict(

@@ -1,4 +1,4 @@
-"""Exporting user controllers"""
+'''Exporting user controllers'''
 
 from .user import *
 from .config import (

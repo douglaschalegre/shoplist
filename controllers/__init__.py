@@ -1,4 +1,4 @@
-"""Creation of controller list"""
+'''Creation of controller list'''
 
 from . import (
     health,

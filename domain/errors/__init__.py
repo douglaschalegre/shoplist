@@ -1,4 +1,4 @@
-"""Export all errors from this package."""
+'''Export all errors from this package.'''
 
 from .generic import (group_errors,
                       InternalError,

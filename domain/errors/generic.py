@@ -1,10 +1,10 @@
-"""Genéricos para a criação de erros"""
+'''Genéricos para a criação de erros'''
 from typing import Any
 from fastapi import HTTPException
 
 
 def build_response(status_code: int, schema: dict, description: str | None = None):
-    """Creating dictionary responses"""
+    '''Creating dictionary responses'''
     return {
         str(status_code): {
             'description': description,
@@ -18,7 +18,7 @@ def build_response(status_code: int, schema: dict, description: str | None = Non
 
 
 class GenericError(HTTPException):
-    """A GenericError to handling application errors with a safe OpenAPI3 integration."""
+    '''A GenericError to handling application errors with a safe OpenAPI3 integration.'''
 
     def __init__(self,
                  status_code: int = 500,
@@ -39,7 +39,7 @@ class GenericError(HTTPException):
 
 
 class InternalError(GenericError):
-    """500: Unknown internal error server."""
+    '''500: Unknown internal error server.'''
 
     def __init__(self):
         super().__init__(
@@ -66,7 +66,7 @@ class InternalError(GenericError):
 
 
 class ResourceNotFoundError(GenericError):
-    """404: Some requested resource cannot be found."""
+    '''404: Some requested resource cannot be found.'''
 
     def __init__(self, resource: str = '<<some-resource>>'):
         super().__init__(
@@ -76,7 +76,7 @@ class ResourceNotFoundError(GenericError):
 
 
 class ResourceAlreadyExists(GenericError):
-    """409: Some requested resource cannot be found."""
+    '''409: Some requested resource cannot be found.'''
 
     def __init__(self, resource: str = '<<some-resource>>'):
         super().__init__(
@@ -86,7 +86,7 @@ class ResourceAlreadyExists(GenericError):
 
 
 class BadRequestError(GenericError):
-    """400: Some requested resource cannot be found."""
+    '''400: Some requested resource cannot be found.'''
 
     def __init__(self, resource: str = '<<some-resource>>'):
         super().__init__(
@@ -96,7 +96,7 @@ class BadRequestError(GenericError):
 
 
 class ForbiddenRequestError(GenericError):
-    """403: Some requested resource is Forbidden."""
+    '''403: Some requested resource is Forbidden.'''
 
     def __init__(self, resource: str = '<<some-resource>>'):
         super().__init__(
@@ -109,10 +109,10 @@ def group_errors(
         status_code: int,
         errors: list[GenericError],
         description: str | None = None) -> dict[str | int, dict[str, Any]]:
-    """Grouping errors into a oneOf in OpenAPI3."""
+    '''Grouping errors into a oneOf in OpenAPI3.'''
 
     def get_schema(err: GenericError):
-        """Recuperar o schema do OpenAPI da exception."""
+        '''Recuperar o schema do OpenAPI da exception.'''
         if isinstance(err, GenericError):
             return err.schema
 

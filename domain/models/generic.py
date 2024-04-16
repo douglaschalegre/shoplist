@@ -1,4 +1,4 @@
-"""Informações genéricas para os modelos"""
+'''Informações genéricas para os modelos'''
 from sqlalchemy import MetaData
 from sqlalchemy.ext.declarative import declarative_base
 from config.database import db
@@ -11,5 +11,5 @@ ALL_DELETE = 'all, delete'
 
 
 class GenericBase(Base):
-    """Base class to build schemas."""
+    '''Base class to build schemas.'''
     __abstract__ = True

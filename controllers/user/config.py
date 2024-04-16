@@ -1,4 +1,4 @@
-"""Tags description to User API"""
+'''Tags description to User API'''
 from fastapi import APIRouter
 
 USER = dict(

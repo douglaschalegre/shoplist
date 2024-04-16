@@ -1,4 +1,4 @@
-"""Health controller"""
+'''Health controller'''
 from fastapi import APIRouter
 from services.health import health as health_service
 from domain.schemas.health import health as health_schemas

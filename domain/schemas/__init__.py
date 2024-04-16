@@ -1,4 +1,4 @@
-"""Exporting schemas"""
+'''Exporting schemas'''
 from .generic import *
 from .app.product import *
 from .app.section import *

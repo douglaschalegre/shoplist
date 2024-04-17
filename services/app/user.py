@@ -1,7 +1,9 @@
 '''Service layer for user module'''
 from uuid import uuid4
 from sqlalchemy.orm import Session
-
+from config import (
+    cryptography
+)
 from domain import (
     models,
     schemas
@@ -25,9 +27,10 @@ def create_user(
     session: Session
 ) -> models.User:
     '''Create a user'''
+    user.password = cryptography.encrypt(user.password)
     user_model = models.User(
         id=str(uuid4()),  # type: ignore
-        **user.model_dump()
+        **user.model_dump(exclude=None)
     )
     return user_repository.create_user(
         user=user_model,

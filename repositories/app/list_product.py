@@ -44,3 +44,16 @@ def delete_list_product(
     session.delete(list_product)
     session.flush()
     return list_product
+
+
+def update_list_product(
+    list_id: str,
+    product_id: str,
+    quantity: int,
+    session: Session
+) -> models.ListProduct:
+    '''Update a list product'''
+    list_product = get_list_product(list_id, product_id, session)
+    list_product.quantity = float(quantity)  # type: ignore
+    session.flush()
+    return list_product

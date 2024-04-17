@@ -64,6 +64,21 @@ def add_product_to_list(
     return created_list_product.shopping_list
 
 
+def update_product_in_list(
+        list_id: UUID,
+        product_id: UUID,
+        list_product_edit: schemas.ListProductEdit,
+        session: Session
+) -> models.ListProduct:
+    '''Update a product in a list'''
+    return lp_repository.update_list_product(
+        list_id=str(list_id),
+        product_id=str(product_id),
+        quantity=list_product_edit.quantity,
+        session=session
+    )
+
+
 def delete_list(
         list_id: UUID,
         session: Session

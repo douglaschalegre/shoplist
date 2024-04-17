@@ -30,6 +30,24 @@ def get_lists(
     )
 
 
+@router.get(
+    path='/list/{list_id}',
+    summary='Get a list by ID',
+    tags=[LIST['name']],
+    response_model=schemas.List
+)
+def get_list_by_id(
+        list_id: UUID = Path(description='List ID', alias='listId'),
+        session: Session = Depends(get_session)
+) -> models.List:
+    '''Get a list by ID'''
+    return list_service.get_list_by_id(
+        list_id=list_id,
+        session=session
+
+    )
+
+
 @router.post(
     path='/list',
     summary='Create a list',

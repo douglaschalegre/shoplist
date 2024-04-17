@@ -1,7 +1,7 @@
 '''List schema'''
 
-from domain.schemas.app.list_product import ListOutput
-from domain.schemas.app.list_user import ListUser
+from domain.schemas.app.list_product import ListOutput as ListProductOutput
+from domain.schemas.app.list_user import ListOutput as ListUserOutput
 from domain.schemas.orm import (
     ListBase
 )
@@ -9,5 +9,5 @@ from domain.schemas.orm import (
 
 class List(ListBase):
     '''List schema'''
-    users: list[ListUser]
-    products: list[ListOutput]
+    users: list[ListUserOutput]
+    products: list[ListProductOutput]

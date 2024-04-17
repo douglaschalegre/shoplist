@@ -10,4 +10,9 @@ from domain.schemas.orm import (
 class ListUser(ListUserBase):
     '''ListUser schema'''
     shopping_lists: ListBase
-    users: UserBase
+    user: UserBase
+
+
+class ListOutput(ListUserBase):
+    '''ListUser schema'''
+    user: UserBase

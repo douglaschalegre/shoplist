@@ -8,10 +8,10 @@ from domain.schemas.orm import (
 
 class ListProduct(ListProductBase):
     '''ListProduct schema'''
-    products: ProductBase
+    product: ProductBase
     shopping_list: ListBase
 
 
 class ListOutput(ListProductBase):
     '''ListProduct schema'''
-    products: ProductBase
+    product: ProductBase

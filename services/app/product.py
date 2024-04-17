@@ -1,7 +1,6 @@
 '''Service layer for product module'''
 from uuid import UUID, uuid4
 from sqlalchemy.orm import Session
-import utils
 from domain import (
     models,
     schemas

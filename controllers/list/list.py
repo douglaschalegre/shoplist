@@ -37,7 +37,7 @@ def get_lists(
     response_model=schemas.List
 )
 def get_list_by_id(
-        list_id: UUID = Path(description='List ID', alias='listId'),
+        list_id: UUID = Path(description='List ID'),
         session: Session = Depends(get_session)
 ) -> models.List:
     '''Get a list by ID'''

@@ -1,7 +1,7 @@
 '''Model for ListProduct'''
 from sqlalchemy import Column, DateTime, String, ForeignKey, Numeric
 from sqlalchemy.orm import relationship
-from sqlalchemy.sql import text
+from sqlalchemy.sql import text, functions
 from .generic import ALL_DELETE, GenericBase
 
 
@@ -15,7 +15,7 @@ class ListProduct(GenericBase):
     created_at = Column('lipr_df_created_at', DateTime,
                         server_default=text('NOW()'))
     updated_at = Column('lipr_df_updated_at', DateTime,
-                        server_default=text('NOW()'))
+                        server_default=text('NOW()'), onupdate=functions.now())
 
     product_id = Column('prod_cd_product', ForeignKey(
         'product.prod_cd_product'))

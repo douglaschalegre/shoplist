@@ -1,7 +1,7 @@
 '''Model for list'''
 from sqlalchemy import Column, DateTime, String
 from sqlalchemy.orm import relationship
-from sqlalchemy.sql import text
+from sqlalchemy.sql import text, functions
 from .generic import GenericBase
 
 
@@ -15,7 +15,7 @@ class List(GenericBase):
     created_at = Column('list_df_created_at', DateTime,
                         server_default=text('NOW()'))
     updated_at = Column('list_df_updated_at', DateTime,
-                        server_default=text('NOW()'))
+                        server_default=text('NOW()'), onupdate=functions.now())
 
     users = relationship('ListUser', back_populates='shopping_list')
     products = relationship('ListProduct', back_populates='shopping_list')

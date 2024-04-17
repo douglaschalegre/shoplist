@@ -1,7 +1,7 @@
 '''Model for user'''
 from sqlalchemy import Column, DateTime, String
 from sqlalchemy.orm import relationship
-from sqlalchemy.sql import text
+from sqlalchemy.sql import text, functions
 from .generic import GenericBase
 
 
@@ -17,6 +17,6 @@ class User(GenericBase):
     created_at = Column('user_df_created_at', DateTime,
                         server_default=text('NOW()'))
     updated_at = Column('user_df_updated_at', DateTime,
-                        server_default=text('NOW()'))
+                        server_default=text('NOW()'), onupdate=functions.now())
 
     shopping_lists = relationship('ListUser', back_populates='user')

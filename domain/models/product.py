@@ -1,7 +1,7 @@
 '''Model for product'''
 from sqlalchemy import Column, DateTime, String, Float, ForeignKey
 from sqlalchemy.orm import relationship
-from sqlalchemy.sql import text
+from sqlalchemy.sql import text, functions
 from .generic import GenericBase
 
 
@@ -18,7 +18,7 @@ class Product(GenericBase):
     created_at = Column('prod_df_created_at', DateTime,
                         server_default=text('NOW()'))
     updated_at = Column('prod_df_updated_at', DateTime,
-                        server_default=text('NOW()'))
+                        server_default=text('NOW()'), onupdate=functions.now())
 
     section_id = Column('sect_cd_section',
                         ForeignKey('section.sect_cd_section'))

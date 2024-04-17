@@ -1,4 +1,3 @@
-# pylint: disable=bare-except, broad-except
 '''Middleware to redirect some endpoints (redirect_routes) APIs.'''
 from starlette.datastructures import UploadFile
 from requests import request as raw_request

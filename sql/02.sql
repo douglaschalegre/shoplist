@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX un_product_barcode ON product(prod_cd_barcode);

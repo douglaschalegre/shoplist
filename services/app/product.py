@@ -1,7 +1,7 @@
 '''Service layer for product module'''
-from uuid import uuid4
+from uuid import UUID, uuid4
 from sqlalchemy.orm import Session
-
+import utils
 from domain import (
     models,
     schemas
@@ -32,5 +32,18 @@ def create_product(
     )
     return product_repository.create_product(
         product=product_model,
+        session=session
+    )
+
+
+def update_product(
+    product_id: UUID,
+    product_edit: schemas.ProductEdit,
+    session: Session
+) -> models.Product:
+    '''Update a product'''
+    return product_repository.update_product(
+        product_id=str(product_id),
+        product_edit=product_edit,
         session=session
     )

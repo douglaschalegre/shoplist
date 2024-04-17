@@ -1,5 +1,6 @@
 '''Controllers for the product module'''
-from fastapi import Depends
+from uuid import UUID
+from fastapi import Depends, Path, Body
 from sqlalchemy.orm import Session
 from config import get_session
 from services.app import (
@@ -42,5 +43,25 @@ def create_product(
     '''Create a product'''
     return product_service.create_product(
         product=product,
+        session=session
+    )
+
+
+@router.patch(
+    path='/product/{product_id}',
+    summary='Update a product',
+    tags=[PRODUCT['name']],
+    response_model=schemas.Product
+)
+def update_product(
+    product_id: UUID = Path(description='Product ID'),
+    product_edit: schemas.ProductEdit = Body(
+        description='Product data to update'),
+    session: Session = Depends(get_session)
+) -> models.Product:
+    '''Update a product'''
+    return product_service.update_product(
+        product_id=product_id,
+        product_edit=product_edit,
         session=session
     )

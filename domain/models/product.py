@@ -24,4 +24,4 @@ class Product(GenericBase):
                         ForeignKey('section.sect_cd_section'))
 
     section = relationship('Section', back_populates='products')
-    shopping_lists = relationship('ListProduct', back_populates='products')
+    shopping_lists = relationship('ListProduct', back_populates='product')

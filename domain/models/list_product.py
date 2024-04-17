@@ -21,7 +21,7 @@ class ListProduct(GenericBase):
         'product.prod_cd_product'))
     list_id = Column('list_cd_list', ForeignKey('list.list_cd_list'))
 
-    products = relationship(
+    product = relationship(
         'Product',
         back_populates='shopping_lists',
         cascade=ALL_DELETE,

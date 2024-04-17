@@ -16,13 +16,13 @@ class ListUser(GenericBase):
 
     user_id = Column('user_cd_user', ForeignKey('user.user_cd_user'))
     list_id = Column('list_cd_list', ForeignKey('list.list_cd_list'))
-    users = relationship(
+    user = relationship(
         'User',
         back_populates='shopping_lists',
         cascade=ALL_DELETE,
         passive_deletes=True
     )
-    shopping_lists = relationship(
+    shopping_list = relationship(
         'List',
         back_populates='users',
         cascade=ALL_DELETE,

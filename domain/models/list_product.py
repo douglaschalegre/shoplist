@@ -23,7 +23,7 @@ class ListProduct(GenericBase):
 
     products = relationship(
         'Product',
-        back_populates='lists',
+        back_populates='shopping_lists',
         cascade=ALL_DELETE,
         passive_deletes=True
     )

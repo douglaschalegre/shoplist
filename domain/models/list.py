@@ -17,5 +17,5 @@ class List(GenericBase):
     updated_at = Column('list_df_updated_at', DateTime,
                         server_default=text('NOW()'))
 
-    users = relationship('ListUser', back_populates='lists')
+    users = relationship('ListUser', back_populates='shopping_lists')
     products = relationship('ListProduct', back_populates='shopping_list')

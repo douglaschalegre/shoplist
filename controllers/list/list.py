@@ -87,7 +87,7 @@ def add_product_to_list(
     path='/list/{list_id}/product/{product_id}',
     summary='Update a list',
     tags=[LIST['name']],
-    response_model=schemas.List
+    response_model=schemas.ListProduct
 )
 def update_product_in_list(
     product_id: UUID = Path(description='Product ID'),
@@ -95,7 +95,7 @@ def update_product_in_list(
     list_product_edit: schemas.ListProductEdit = Body(
         description='Product to update'),
     session: Session = Depends(get_session)
-) -> models.List:
+) -> models.ListProduct:
     '''Update a list'''
     return list_service.update_product_in_list(
         list_id=list_id,

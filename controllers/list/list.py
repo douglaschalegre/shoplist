@@ -30,6 +30,24 @@ def get_lists(
     )
 
 
+@router.get(
+    path='/list/{list_id}',
+    summary='Get a list by ID',
+    tags=[LIST['name']],
+    response_model=schemas.List
+)
+def get_list_by_id(
+        list_id: UUID = Path(description='List ID', alias='listId'),
+        session: Session = Depends(get_session)
+) -> models.List:
+    '''Get a list by ID'''
+    return list_service.get_list_by_id(
+        list_id=list_id,
+        session=session
+
+    )
+
+
 @router.post(
     path='/list',
     summary='Create a list',
@@ -72,8 +90,8 @@ def add_product_to_list(
     response_model=schemas.List
 )
 def update_product_in_list(
-    product_id: UUID = Path(description='Product ID'),
-    list_id: UUID = Path(description='List ID'),
+    product_id: UUID = Path(description='Product ID', alias='productId'),
+    list_id: UUID = Path(description='List ID', alias='listId'),
     list_product_edit: schemas.ListProductEdit = Body(
         description='Product to update'),
     session: Session = Depends(get_session)
@@ -94,7 +112,7 @@ def update_product_in_list(
     response_model=schemas.List
 )
 def delete_list(
-    list_id: UUID = Path(description='List ID'),
+    list_id: UUID = Path(description='List ID', alias='listId'),
     session: Session = Depends(get_session)
 ) -> models.List:
     '''Delete a list'''
@@ -111,8 +129,8 @@ def delete_list(
     response_model=schemas.List
 )
 def delete_product_from_list(
-    product_id: UUID = Path(description='Product ID'),
-    list_id: UUID = Path(description='List ID'),
+    product_id: UUID = Path(description='Product ID', alias='productId'),
+    list_id: UUID = Path(description='List ID', alias='listId'),
     session: Session = Depends(get_session)
 ) -> models.List:
     '''Delete a product from a list'''

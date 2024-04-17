@@ -22,7 +22,7 @@ from .config import (
     response_model=list[schemas.List]
 )
 def get_user_list(
-    list_id: UUID = Path(title='UUID of the list'),
+    list_id: UUID = Path(title='UUID of the list', alias='listId'),
     session: Session = Depends(get_session)
 ) -> list[models.ListUser]:
     '''Get all user_list'''

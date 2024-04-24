@@ -4,7 +4,9 @@ from sqlalchemy.orm import Session
 from domain import (
     models
 )
-
+from repositories.app import (
+    list as list_repository
+)
 
 def get_list_users(
     list_id: str,
@@ -40,3 +42,24 @@ def get_list_user(
     if not query:
         raise ValueError('ListUser not found')
     return query
+
+def remove_users_from_list(
+    list_id: str,
+    users_to_remove: list[str],
+    session: Session
+) -> list[models.ListUser]:
+    '''Remove users from a list'''
+    list_users = get_list_users(
+        list_id=list_id,
+        session=session
+    )
+    for user in list_users:
+        if user.user_id in users_to_remove:
+            session.delete(user)
+    session.flush()
+
+    return list_repository.get_list_by_id(
+        list_id=list_id,
+        session=session
+    ).users
+    

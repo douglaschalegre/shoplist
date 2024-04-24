@@ -41,12 +41,31 @@ def get_user_list(
 def add_users_to_list(
     list_user_input: schemas.ListUserInput = Body(
         title='Input for list user',
-        description='Necessary data to add users to a list'
-    ),
+        description='Necessary data to add users to a list'),
     session: Session = Depends(get_session)
 ) -> list[models.ListUser]:
     '''Add users to a list'''
     return list_user_service.add_users_to_list(
         list_user_input=list_user_input,
+        session=session
+    )
+
+@router.patch(
+    path='/list/{list_id}/user',
+    summary='Remove users from a list',
+    tags=[LIST_USER['name']],
+    response_model=list[schemas.ListUser]
+)
+def remove_users_from_list(
+        list_id: UUID = Path(
+            description='UUID of the list'),
+        users_to_remove: list[str] = Body(
+            description='Necessary data to remove users from a list'),
+        session: Session = Depends(get_session)
+) -> list[models.ListUser]:
+    '''Remove users from a list'''
+    return list_user_service.remove_users_from_list(
+        list_id=list_id,
+        users_to_remove=users_to_remove,
         session=session
     )

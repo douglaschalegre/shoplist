@@ -54,3 +54,16 @@ def add_users_to_list(
         inputs=list_user_models,
         session=session
     )
+
+def remove_users_from_list(
+        list_id: UUID,
+        users_to_remove: list[str],
+        session: Session
+)-> list[models.ListUser]:
+    '''Remove users from a list'''
+
+    return list_user_repository.remove_users_from_list(
+        list_id=str(list_id),
+        users_to_remove=users_to_remove,
+        session=session
+    )

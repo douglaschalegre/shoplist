@@ -1,5 +1,5 @@
 '''Service layer for section module'''
-from uuid import uuid4
+from uuid import uuid4, UUID
 from sqlalchemy.orm import Session
 
 from domain import (
@@ -19,6 +19,15 @@ def get_sections(
         session=session
     )
 
+def get_section_by_id(
+    section_id: UUID,
+    session: Session
+) -> models.Section:
+    '''Get a section by ID'''
+    return section_repository.get_section_by_id(
+        section_id=str(section_id),
+        session=session
+    )
 
 def create_section(
     section: schemas.SectionInput,

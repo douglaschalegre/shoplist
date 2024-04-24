@@ -13,6 +13,15 @@ def get_sections(
     query = session.query(models.Section).all()
     return query
 
+def get_section_by_id(
+    section_id: str,
+    session: Session
+) -> models.Section:
+    '''Get a section by id'''
+    query = session.query(models.Section).filter(
+        models.Section.id == section_id
+    ).first()
+    return query
 
 def create_section(
     section: models.Section,

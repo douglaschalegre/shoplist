@@ -1,16 +1,10 @@
-# About 🧑🏻‍💻
+# About 🛒🍅🍔
 
-This repository contains a simple API that serves as a kickstart for new projects using FastAPI, SQLAlchemy and PostgreSQL. It's built with a simple layered architecture, containing domain, service, repository and controller layers. With this layered architecture approach, it's possible to separate concerns and make the codebase more maintainable and scalable.
-
-<p align="center">
-  <img src="layered-architecture.png" width="250">
-</p>
-
-It's also possible to add more layers if responsibilities grow within a specific layer. That being said, it's important to keep in mind that layers should be as independent as possible, and the dependencies should always point inwards, otherwise, could lead to ciclic dependencies mainly because of Pydantic schemas.
+This repo is a backend API for a shopping list application, where users can: create, update, delete and list shopping lists and items, add/remove other users from their list. Items are separated by sections (e.g. fruits, vegetables, etc.) to help users organize their shopping list.
 
 - Main frameworks and packages:
   - [FastAPI](https://fastapi.tiangolo.com/)
-  - [SQLAlchemy](https://www.sqlalchemy.org/) ([PostgreSQL](https://www.postgresql.org/) database).
+  - [SQLAlchemy](https://www.sqlalchemy.org/) ([SQLite](https://www.sqlite.org/) database).
 
 # How to run 🏃🏻‍♂️‍➡️
 
@@ -24,13 +18,11 @@ In project folder, execute the following commands:
 
 ```bash
 pip install pipenv
-export PIPENV_VENV_IN_PROJECT="enabled"
 mkdir .venv
 pipenv shell
-source .venv/Scripts/activate
 ```
 
-## Set environment variables
+## Set environment variables ⚙
 
 Create a .env file with the required environment variables see [.env.example]
 
@@ -42,7 +34,7 @@ Run the following installation command:
 pipenv install --dev
 ```
 
-## Run server
+## Run server 🚀
 
 On virtual environment, execute
 
@@ -50,6 +42,6 @@ On virtual environment, execute
 pipenv run start
 ```
 
-## Documentation
+## Documentation 📚
 
 While running the server, one can access the [API documentation](http://localhost:1337/docs).

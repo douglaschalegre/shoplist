@@ -53,17 +53,17 @@ class RedirectToOtherApi:
         self.redirect_routes = {}
 
         for api in external_apis:
-            route_key = api["redirecter"].replace(BASE_PATH, '')  # type:ignore
-            self.redirect_routes[route_key] = dict(url=api["url"])
+            route_key = api['redirecter'].replace(BASE_PATH, '')  # type:ignore
+            self.redirect_routes[route_key] = dict(url=api['url'])
 
-    type = "http"
+    type = 'http'
 
     def is_redirectable(self, request: Request) -> None | dict:
         '''Check if request is redirectable to other API.'''
 
         url_without_base = request.url.path
 
-        if base_url is not None and base_url != "":
+        if base_url is not None and base_url != '':
             url_without_base = request.url.path.replace(base_url, '')
 
         has_base_path = url_without_base.startswith(self.base_path)
@@ -103,7 +103,7 @@ class RedirectToOtherApi:
             query = request.url.query
 
             token = request.headers.get(
-                "Authorization", "").replace('Bearer ', '')
+                'Authorization', '').replace('Bearer ', '')
 
             files = await read_formdata(request)
             body = await read_json(request)

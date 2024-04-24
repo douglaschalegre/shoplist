@@ -19,10 +19,10 @@ def put_redirecter(paths: dict, api: dict):
                 if path is not None and required_path['method'] in path:
                     new_paths = {
                         **new_paths,
-                        f'{api["redirecter"]}{required_path["path"]}': {
-                            f'{required_path["method"]}': {
+                        f'{api['redirecter']}{required_path['path']}': {
+                            f'{required_path['method']}': {
                                 **path.get(required_path['method']),
-                                'tags': [f'[PROXY] {api["name"]}']
+                                'tags': [f'[PROXY] {api['name']}']
                             }
                         }
                     }
@@ -52,8 +52,8 @@ def extend_openapi(app: FastAPI, base_url: str, tags: list):
     def builder():
         '''Callback to fast api'''
         servers = None
-        if base_url is not None and base_url != "":
-            servers = [{"url": base_url}]
+        if base_url is not None and base_url != '':
+            servers = [{'url': base_url}]
 
         openapi_schema = get_openapi(
             title=app.title,
@@ -65,10 +65,10 @@ def extend_openapi(app: FastAPI, base_url: str, tags: list):
         )
 
         for api in external_apis:
-            if api["open_api_path"] is not None:
+            if api['open_api_path'] is not None:
                 raw_docs = request(
                     method='GET',
-                    url=f'{api["url"]}{api["open_api_path"]}',
+                    url=f'{api['url']}{api['open_api_path']}',
                     timeout=300
                 )
                 if raw_docs.status_code == 200:
@@ -78,13 +78,13 @@ def extend_openapi(app: FastAPI, base_url: str, tags: list):
 
                     openapi_schema['tags'] = openapi_schema.get(
                         'tags', []) + [dict(
-                            name=f'[PROXY] {api["name"]}',
-                            description=api["description"]
+                            name=f'[PROXY] {api['name']}',
+                            description=api['description']
                         )]
 
                 else:
                     print(
-                        f'Error when get OpenAPI from {api["name"]} with url {api["url"]}')
+                        f'Error when get OpenAPI from {api['name']} with url {api['url']}')
 
         return openapi_schema
 

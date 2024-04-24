@@ -22,7 +22,7 @@ class ExceptionCollector:
         app.add_exception_handler(
             StarletteHTTPException, http_exception_handler)
 
-    type = "http"
+    type = 'http'
 
     async def __call__(self, request: Request, call_next):
         try:
@@ -34,4 +34,4 @@ class ExceptionCollector:
             traceback.print_exc()
             detail = traceback.format_exc()
             return JSONResponse(status_code=500,
-                                content=dict(message="Internal server error", detail=detail))
+                                content=dict(message='Internal server error', detail=detail))

@@ -9,8 +9,8 @@ def build_response(status_code: int, schema: dict, description: str | None = Non
         str(status_code): {
             'description': description,
             'content': {
-                "application/json": {
-                    "schema": schema
+                'application/json': {
+                    'schema': schema
                 }
             }
         }
@@ -22,16 +22,16 @@ class GenericError(HTTPException):
 
     def __init__(self,
                  status_code: int = 500,
-                 message: str = "Internal server error",
+                 message: str = 'Internal server error',
                  description: str | None = None):
         self.status_code = status_code
         self.message = message
         self.schema = {
-            "type": "object",
-            "properties": {
-                "message": {
-                    "type": "string",
-                    "example": message,
+            'type': 'object',
+            'properties': {
+                'message': {
+                    'type': 'string',
+                    'example': message,
                 }
             }}
         self.response = build_response(status_code, self.schema, description)
@@ -49,15 +49,15 @@ class InternalError(GenericError):
         self.status_code = 500
         self.message = 'Internal server error'
         self.schema = {
-            "type": "object",
-            "properties": {
-                "message": {
-                    "type": "string",
-                    "example": self.message,
+            'type': 'object',
+            'properties': {
+                'message': {
+                    'type': 'string',
+                    'example': self.message,
                 },
-                "detail": {
-                    "type": "string",
-                    "example": "<<traceback>>"
+                'detail': {
+                    'type': 'string',
+                    'example': '<<traceback>>'
                 }
             }
         }

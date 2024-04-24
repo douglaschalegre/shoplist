@@ -63,6 +63,26 @@ def add_product_to_list(
     )
     return created_list_product.shopping_list
 
+def add_products_to_list(
+        list_id: UUID,
+        list_products_input: list[schemas.ListProductInput],
+        session: Session
+) -> models.List:
+    '''Add products to a list'''
+    list_products = [
+        models.ListProduct(
+            id=str(uuid4()),  # type: ignore
+            **list_product_input.model_dump()
+        ) for list_product_input in list_products_input]
+    
+    created_list_products = lp_repository.create_list_products(
+        list_id=str(list_id),
+        list_products=list_products,
+        session=session
+    )
+    
+    return created_list_products[0].shopping_list
+    
 
 def update_product_in_list(
         list_id: UUID,

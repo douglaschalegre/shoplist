@@ -6,6 +6,10 @@ from domain import (
     errors
 )
 
+from repositories.app import (
+    list as list_repository
+)
+
 
 def create_list_product(
     list_product: models.ListProduct,
@@ -17,6 +21,18 @@ def create_list_product(
 
     return list_product
 
+def create_list_products(
+    list_id: str,
+    list_products: list[models.ListProduct],
+    session: Session
+) -> list[models.ListProduct]:
+    '''Create a list of list products'''
+    list_repository.get_list_by_id(list_id, session)
+    
+    session.add_all(list_products)
+    session.flush()
+
+    return list_products
 
 def get_list_product(
     list_id: str,

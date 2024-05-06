@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS
   list (
     list_cd_list TEXT not null PRIMARY KEY,
     list_nm_name TEXT not null,
+    list_cd_code TEXT not null UNIQUE,
     list_df_created_at TIMESTAMP not null default CURRENT_TIMESTAMP,
     list_df_updated_at TIMESTAMP not null default CURRENT_TIMESTAMP
   );

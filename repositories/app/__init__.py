@@ -1,4 +1,5 @@
-'''Exporting repositories of the app module'''
+"""Exporting repositories of the app module"""
+
 from .product import *
 from .section import *
 from .list_product import *

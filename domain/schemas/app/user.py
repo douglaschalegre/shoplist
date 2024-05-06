@@ -1,10 +1,10 @@
-'''User schema'''
+"""User schema"""
+
 from pydantic import Field
-from domain.schemas.orm import (
-    UserBase
-)
+from domain.schemas.orm import UserBase
 
 
 class User(UserBase):
-    '''User schema'''
+    """User schema"""
+
     password: str = Field(exclude=True)

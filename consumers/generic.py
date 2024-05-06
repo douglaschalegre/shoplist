@@ -1,15 +1,13 @@
-'''Generic consumer package to handle requests with token and exceptions'''
+"""Generic consumer package to handle requests with token and exceptions"""
+
 import json
 from requests import request as raw_request
 
 
 def request(token: str, **kwargs) -> dict:
-    '''Requests request with interceptors to handle token and commons exceptions.'''
+    """Requests request with interceptors to handle token and commons exceptions."""
 
-    headers: dict = {
-        'Content-Type': 'application/json',
-        'Authorization': f'Bearer {token}'
-    }
+    headers: dict = {'Content-Type': 'application/json', 'Authorization': f'Bearer {token}'}
 
     if 'headers' in kwargs:
         headers.update(kwargs['headers'])

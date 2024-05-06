@@ -1,4 +1,5 @@
-'''Database config package'''
+"""Database config package"""
+
 import os
 from typing import Any
 from sqlalchemy import create_engine
@@ -9,13 +10,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-db: dict[str, Any] = dict(
-    name=os.getenv('NAME_DB')
-)
+db: dict[str, Any] = dict(name=os.getenv('NAME_DB'))
 
 
 def build_db_url(params: dict[str, Any]) -> str:
-    '''build db url'''
+    """build db url"""
     return f'sqlite:///./{params["name"]}.db'
 
 
@@ -26,7 +25,7 @@ Session = sessionmaker(bind=engine, autocommit=False)
 
 
 def get_session():
-    '''Função para geração da session.'''
+    """Função para geração da session."""
     session = Session()
     try:
         yield session

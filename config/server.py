@@ -1,4 +1,5 @@
-'''Importing server env variables'''
+"""Importing server env variables"""
+
 import os
 from dotenv import load_dotenv
 

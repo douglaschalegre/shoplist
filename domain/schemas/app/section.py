@@ -1,10 +1,9 @@
-'''Section schema'''
-from domain.schemas.orm import (
-    SectionBase,
-    ProductLite
-)
+"""Section schema"""
+
+from domain.schemas.orm import SectionBase, ProductLite
 
 
 class Section(SectionBase):
-    '''Section schema'''
+    """Section schema"""
+
     products: list[ProductLite]

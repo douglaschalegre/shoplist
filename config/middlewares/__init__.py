@@ -1,4 +1,5 @@
-'''Criação de lista de middlewares'''
+"""Criação de lista de middlewares"""
+
 from .exception import ExceptionCollector
 from .redirect import RedirectToOtherApi
 from .cors import cors

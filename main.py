@@ -1,4 +1,4 @@
-'''Aplication initializing function and printing'''
+"""Aplication initializing function and printing"""
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -12,9 +12,9 @@ from controllers import routes, tags
 from domain.errors import base_errors
 
 
-DESCRIPTION = '''
+DESCRIPTION = """
 API for managing shopping lists.
-'''
+"""
 
 app = FastAPI(
     title=application['name'],
@@ -41,7 +41,7 @@ app.openapi = extend_openapi(app, base_url or '', tags=tags)
 api = FastAPI(openapi_url=None)
 api.mount(base_url, app)
 
-print(f'''
+print(f"""
 Service {application['id']} is available on port {port}:
 
   Environment variables:
@@ -59,12 +59,9 @@ Service {application['id']} is available on port {port}:
         ENVIRONMENT: {environment}
 
   Docs (Swagger) available on: http://localhost:{port}{base_url or ''}{app.docs_url}.
-''')
+""")
 
 reload = environment.lower() != 'prd'
 
 if __name__ == '__main__':
-    uvicorn.run('main:api',
-                host='0.0.0.0',
-                port=port,
-                reload=reload)
+    uvicorn.run('main:api', host='0.0.0.0', port=port, reload=reload)

@@ -1,4 +1,4 @@
-'''Creation of controller list'''
+"""Creation of controller list"""
 
 from . import (
     health,
@@ -13,7 +13,6 @@ routes = [
     shopping_list.router,
     section.router,
     product.router,
-
     health.router,  # health route must be the last one!
 ]
 tags = [
@@ -21,6 +20,5 @@ tags = [
     *shopping_list.tags,
     *section.tags,
     *product.tags,
-
     *health.tags,  # health tag must be the last one!
 ]

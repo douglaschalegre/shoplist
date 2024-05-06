@@ -1,18 +1,16 @@
-'''ListUser schema'''
-from domain.schemas.orm import (
-    ListUserBase,
-    ListBase,
-    UserBase
+"""ListUser schema"""
 
-)
+from domain.schemas.orm import ListUserBase, ListBase, UserBase
 
 
 class ListUser(ListUserBase):
-    '''ListUser schema'''
+    """ListUser schema"""
+
     shopping_lists: ListBase
     user: UserBase
 
 
 class ListOutput(ListUserBase):
-    '''ListUser schema'''
+    """ListUser schema"""
+
     user: UserBase

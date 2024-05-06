@@ -1,4 +1,5 @@
-'''Improve request logging'''
+"""Improve request logging"""
+
 import logging
 
 # Disable uvicorn access logger

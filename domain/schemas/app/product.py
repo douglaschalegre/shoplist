@@ -1,8 +1,7 @@
-'''Product schema'''
-from domain.schemas.orm import (
-    ProductBase
-)
+"""Product schema"""
+
+from domain.schemas.orm import ProductBase
 
 
 class Product(ProductBase):
-    '''Product schema'''
+    """Product schema"""

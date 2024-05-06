@@ -1,4 +1,5 @@
-'''Env var importing package'''
+"""Env var importing package"""
+
 import logging
 import os
 from dotenv import load_dotenv

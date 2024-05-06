@@ -40,8 +40,8 @@ target-version = "py310"
 
 [lint.flake8-quotes]
 inline-quotes = "single"
-docstring-quotes = "single"
-multiline-quotes = "single"
+docstring-quotes = "double"
+multiline-quotes = "double"
 
 [lint.flake8-bugbear]
 extend-immutable-calls = ["fastapi.Depends", "fastapi.Query", "fastapi.Body", "fastapi.Path"]
